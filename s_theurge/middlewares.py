@@ -90,11 +90,12 @@ class STheurgeDownloaderMiddleware:
         # - return a Response object
         # - return a Request object
         # - or raise IgnoreRequest
-        logger.info(
-            "[Download Latency] %s: %s",
-            request.url,
-            request.meta["download_latency"],
-        )
+        if "download_latency" in request.meta:
+            logger.info(
+                "[Download Latency] %s: %s",
+                request.url,
+                request.meta["download_latency"],
+            )
         return response
 
     def process_exception(self, request, exception, spider):
