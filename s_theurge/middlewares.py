@@ -3,10 +3,13 @@
 # See documentation in:
 # https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-from scrapy import signals
+import logging
 
 # useful for handling different item types with a single interface
-from itemadapter import is_item, ItemAdapter
+from itemadapter import ItemAdapter, is_item
+from scrapy import signals
+
+logger = logging.getLogger(__name__)
 
 
 class STheurgeSpiderMiddleware:
@@ -53,7 +56,7 @@ class STheurgeSpiderMiddleware:
             yield r
 
     def spider_opened(self, spider):
-        spider.logger.info('Spider opened: %s' % spider.name)
+        spider.logger.info("Spider opened: %s" % spider.name)
 
 
 class STheurgeDownloaderMiddleware:
@@ -87,6 +90,11 @@ class STheurgeDownloaderMiddleware:
         # - return a Response object
         # - return a Request object
         # - or raise IgnoreRequest
+        logger.info(
+            "[Download Latency] %s: %s",
+            request.url,
+            request.meta["download_latency"],
+        )
         return response
 
     def process_exception(self, request, exception, spider):
@@ -100,4 +108,4 @@ class STheurgeDownloaderMiddleware:
         pass
 
     def spider_opened(self, spider):
-        spider.logger.info('Spider opened: %s' % spider.name)
+        spider.logger.info("Spider opened: %s" % spider.name)
