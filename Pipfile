@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+scrapy = "*"
+
+[dev-packages]
+bandit = "*"
+black = "*"
+isort = "*"
+mypy = "*"
+pre-commit = "*"
+pylint = "*"
+pytest = "*"
+pytest-cov = "*"
+pytest-xdist = "*"
+radon = "*"
+tox = "*"
+
+[requires]
+python_version = "3.9"
