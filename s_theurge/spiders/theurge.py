@@ -62,9 +62,10 @@ class TheUrgeSpider(CrawlSpider):
             "//div[@class='_2f_jY']/article[@class='_2Mqpk']"
         ):
             loader = ItemLoader(STheurgeItem(), selector=product)
-            loader.add_xpath("brand", ".//a/p/span/text()")
-            loader.add_xpath("description", ".//a/p/text()")
-            loader.add_xpath("price", ".//a/div[@class='eP0wn _2xJnS']/text()")
+
+            for key, value in self.xpath_yaml["theurge"]["product"].items():
+                loader.add_xpath(key, value["xpath"])
+
             loader.add_value("category", category)
             yield loader.load_item()
 
