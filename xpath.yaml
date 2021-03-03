@@ -1,0 +1,10 @@
+theurge:
+  cat:
+    - "//*[@id='uid2']/div[1]"
+  product:
+    brand:
+      xpath: ".//a/p/span/text()"
+    description:
+      xpath: ".//a/p/text()"
+    price:
+      xpath: ".//a/div[@class='eP0wn _2xJnS']/text()"
