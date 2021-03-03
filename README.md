@@ -5,6 +5,12 @@ This repository is a spider to scrape theurge.
 The environment for this spider is created by pipenv, and `Pipfile` is included
 already.
 
+Run the spider by the command:
+
+```console
+foo@bar:~$ scrapy crawl --xpath-yaml xpath.yaml theurge
+```
+
 ## Part 1
 
 A spider inherited from `CrawlSpider` is created here:
