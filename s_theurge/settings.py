@@ -86,3 +86,10 @@ EXTENSIONS = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+FEEDS = {
+    "products-%(batch_id)03d.json": {
+        "format": "jsonlines",
+        "batch_item_count": 20,
+    },
+}
