@@ -47,11 +47,6 @@ class TheUrgeSpider(CrawlSpider):
         :type response:
         :return:
         :rtype:
-
-        @url https://theurge.com/women/search/?cat=bags
-        @returns items 20
-        @returns requests 0
-        @scrapes brand category description price
         """
         try:
             category = parse_qs(urlparse(response.url).query)["cat"][0]
