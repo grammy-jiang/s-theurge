@@ -24,14 +24,21 @@ class TheUrgeSpider(CrawlSpider):
         "https://theurge.com/",
     ]
 
-    rules: List[str] = [
-        Rule(
-            LinkExtractor(restrict_xpaths="//*[@id='uid2']/div[1]"),
-            callback="parse_item",
-        )
-    ]
+    def __init__(self, *args, **kwargs):
+        """
 
-    limit_product_number: int = 0
+        :param args:
+        :param kwargs:
+        """
+        if "xpath_yaml" in kwargs:
+            self.rules: List[Rule] = [
+                Rule(LinkExtractor(restrict_xpaths=cat), callback="parse_item")
+                for cat in kwargs["xpath_yaml"]["theurge"]["cat"]
+            ]
+
+        super(TheUrgeSpider, self).__init__(*args, **kwargs)
+
+        self.limit_product_number: int = 0
 
     def parse_item(self, response: Response):
         """
