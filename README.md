@@ -2,6 +2,9 @@
 
 This repository is a spider to scrape theurge.
 
+The environment for this spider is created by pipenv, and `Pipfile` is included
+already.
+
 ## Part 1
 
 A spider inherited from `CrawlSpider` is created here:
